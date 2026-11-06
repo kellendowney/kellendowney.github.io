@@ -1,4 +1,11 @@
 /* Editorial finishing: a coordinated entrance, clearer reading, warm contrast. */
+.people-skills{border-top:1px solid #e5b94d40;margin-top:27px;padding-top:22px}
+.people-skills>h3{font:400 25px/1.2 Georgia,serif;color:#e5c77e;letter-spacing:-.3px;margin:0 0 20px}
+.people-skills-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 30px;margin:0;padding:0}
+.people-skills-list>div{padding-left:14px;border-left:1px solid #e5b94d42;min-width:0}
+.people-skills-list dt{font:500 13px/1.5 Arial,sans-serif;color:#ede9de;margin:0 0 7px}
+.people-skills-list dd{font:13px/1.7 Arial,sans-serif;color:#b5b2a7;margin:0}
+@media(max-width:700px){.people-skills{margin-top:24px;padding-top:21px}.people-skills>h3{font-size:24px}.people-skills-list{grid-template-columns:1fr;gap:20px}.people-skills-list dt{font-size:14px}.people-skills-list dd{font-size:13px}}
 :root{--muted:#b5b2a7}
 
 /* Content is visible by default; the short entrance needs no JavaScript. */
@@ -122,7 +129,10 @@ footer{font-size:11px;line-height:1.7}
   .stage-copy .eyebrow{font-size:9px}
   .project-proof dd{font-size:13px}
   .work-hint{font-size:11px}
-  .about.about-refined{padding-top:42px;padding-bottom:42px}
+  .about.about-refined{grid-template-columns:1fr;gap:28px;padding-top:42px;padding-bottom:42px}
+  .about-refined .about-portrait{grid-column:auto;grid-row:auto;min-height:0;max-width:230px;width:100%;justify-self:center}
+  .about-refined .about-portrait img{height:245px;min-height:0;max-height:none}
+  .about-refined .about-copy{display:block!important}
   .about-refined .about-copy>.about-lead{font-size:16px}
   .about-refined .about-copy>p{font-size:14px}
   .education-school>span{font-size:9px;line-height:1.8}
