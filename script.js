@@ -32,11 +32,42 @@ function projectIllustration(p){
   return '';
 }
 
+// Project-specific process summaries, grounded in the project descriptions.
+const projectProcesses = {
+  competitive: { label: 'COMPETITIVE INTELLIGENCE', steps: [
+    ['Competitor research', 'Organize competitor and budget signals.'],
+    ['Platform assessment', 'Assess program maturity and customer interest.'],
+    ['Market positioning', 'Connect findings to strategic positioning.']
+  ]},
+  'shared-housing': { label: 'SHARED-HOUSING REVENUE', steps: [
+    ['Property features', 'Amenities, accessibility, condition, and local context.'],
+    ['Revenue modeling', 'Compare revenue and prioritization models.'],
+    ['Pricing and upgrade priorities', 'Rank proposed pricing tests and targeted upgrades.']
+  ]},
+  forecast: { label: 'ECONOMIC OUTLOOK', steps: [
+    ['Economic indicators', 'Consumption, investment, trade, and labor conditions.'],
+    ['Growth and inflation analysis', 'Interpret demand, supply, and price pressures.'],
+    ['Outlook', 'Develop the Q1–Q2 2026 outlook.']
+  ]},
+  rental: { label: 'RENTAL PROPERTY ROI', steps: [
+    ['Property data', 'San Diego County sales and rental records.'],
+    ['Rental-income estimates', 'Estimate income from property characteristics.'],
+    ['Projected ROI ranking', 'Compare listings using projected returns.']
+  ]},
+  energy: { label: 'AUSTRALIA’S ENERGY STRATEGY', steps: [
+    ['Energy supply and demand', 'Resources, exports, and sector demand.'],
+    ['Policy trade-offs', 'Balance security, sustainability, and growth.'],
+    ['Long-term strategy', 'Assess infrastructure and policy over 20 years.']
+  ]}
+};
+
 // Public evidence and clearly labeled concept previews. Source files remain unchanged.
 function evidencePreview(p,inDialog=false){
   if(p.id==='media')return `<div class="evidence-preview evidence-research"><div class="preview-overline"><span>FROM THE MANUSCRIPT</span><span>FIGURE 01</span></div><h3>One question.<br>Different patterns.</h3><a class="evidence-image" href="assets/previews/media-marginal-effects.png" target="_blank" rel="noopener" aria-label="Open full-size marginal effects research figure"><img src="assets/previews/media-marginal-effects.png" alt="Original Figure 1: average marginal effects of social media exposure across feeling-thermometer categories, compared before and after the assassination attempt by partisan identification. Shaded bands show 95% confidence intervals." width="1431" height="894" loading="lazy"><span>Explore the full-size figure <b aria-hidden="true">↗</b></span></a><p class="preview-context">An observational comparison across party groups. Uncertainty stays visible alongside each estimate.</p><a class="preview-source" href="assets/Media_Exposure_Manuscript_and_Appendix.pdf#page=21" target="_blank" rel="noopener">Read Figure 1 in context · manuscript p. 20 ↗</a></div>`;
   if(p.id==='loneliness')return `<div class="evidence-preview evidence-poster"><div class="preview-overline"><span>INDEPENDENT CAPSTONE</span><span>ORIGINAL POSTER</span></div><h3>Follow the evidence.</h3><a class="evidence-image poster-exhibit" href="${p.posterPdf}" target="_blank" rel="noopener"><img src="${p.image}" alt="${escapeHtml(p.imageAlt)}" loading="lazy"><span>Open the research poster <b aria-hidden="true">↗</b></span></a><p class="preview-context">The results did not support the original hypothesis. Explore the measures, models, and findings in the poster.</p></div>`;
   if(inDialog)return '';
+  const process=projectProcesses[p.id];
+  if(process)return `<div class="evidence-preview process-preview process-${p.id}"><div class="preview-overline"><span>${escapeHtml(process.label)}</span><span>THE PROCESS</span></div><ol class="project-process-flow" aria-label="${escapeHtml(p.title)} process">${process.steps.map((step,i)=>`<li class="process-step"><span class="process-number" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><div><h3>${escapeHtml(step[0])}</h3><p>${escapeHtml(step[1])}</p></div></li>`).join('')}</ol></div>`;
   if(p.id==='podcast')return `<div class="evidence-preview evidence-podcast"><div class="preview-overline"><span>DECISION SUPPORT</span><span>TRY THE DEMO</span></div><h3>A feed becomes<br>a shortlist.</h3><div class="preview-screen"><div class="preview-screen-top"><span class="preview-window-dots" aria-hidden="true">● ● ●</span><span>Podcast Opportunity Explorer</span></div><div class="preview-filter-chips"><span>Category</span><span>Language</span><span>Activity</span></div><div class="preview-feed-rows" aria-hidden="true">${[1,2,3].map((x,i)=>`<div><span class="preview-feed-icon">${String(x).padStart(2,'0')}</span><span class="preview-feed-lines"><i></i><i></i></span><span class="preview-feed-check">✓</span></div>`).join('')}</div><div class="preview-screen-bottom"><span>Adjust the rules.</span><strong>See what matches.</strong></div></div><a class="preview-demo-link" href="#podcast-lab">Build a sample shortlist <span aria-hidden="true">↘</span></a><p class="preview-context">Illustrative portfolio demo. The team’s full-data application remains in development.</p></div>`;
   if(p.id==='planner')return `<div class="evidence-preview evidence-planner"><div class="preview-overline"><span>TROJAN DEADLINE HUB</span><span>CONCEPT PREVIEW</span></div><h3>AI suggests.<br>You verify.</h3><div class="planner-preview-card"><div class="planner-preview-header"><span>Syllabus → calendar</span><span class="planner-review-badge">Human review</span></div><ol class="planner-preview-flow"><li><span>01</span><div><strong>Extract</strong><small>Find dates and assignments in course materials.</small></div></li><li><span>02</span><div><strong>Confirm</strong><small>Review extracted dates. Resolve missing or TBD values.</small></div></li><li><span>03</span><div><strong>Plan</strong><small>Save verified deadlines and organize the workload.</small></div></li></ol></div><p class="preview-context">A visual summary of the proposed workflow, with student confirmation before saving.</p></div>`;
   if(p.id==='uas-funding')return `<div class="evidence-preview evidence-strategy"><div class="preview-overline"><span>GENERAL ATOMICS</span><span>ANALYTICAL APPROACH</span></div><h3>Investment signals.<br>Business context.</h3><div class="strategy-method-grid"><div><span>01 / ORGANIZE</span><strong>Procurement<br>+ R&amp;D</strong><small>Map budget lines to aircraft groups.</small></div><div><span>02 / NORMALIZE</span><strong>Comparable<br>dollars</strong><small>Adjust for inflation.</small></div><div><span>03 / MODEL</span><strong>Trend<br>analysis</strong><small>OLS and time-series regression.</small></div><div><span>04 / INTERPRET</span><strong>Market<br>direction</strong><small>Translate results into a strategic discussion.</small></div></div><p class="preview-context">Public overview of the method. Internal reports and underlying figures are not reproduced.</p></div>`;
