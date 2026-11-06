@@ -1,0 +1,160 @@
+/* Editorial finishing: a coordinated entrance, clearer reading, warm contrast. */
+:root{--muted:#b5b2a7}
+
+/* Content is visible by default; the short entrance needs no JavaScript. */
+.hero-copy{animation:none}
+.hero-copy>.eyebrow{font-size:10px;letter-spacing:1.65px;animation:polish-arrive .6s ease-out both}
+.hero-copy>h1{animation:polish-arrive .72s cubic-bezier(.2,.7,.2,1) .05s both}
+.hero-copy>.intro{font-size:24px;line-height:1.4;animation:polish-arrive .65s ease-out .13s both}
+.hero-copy>.sub{font-size:14px;line-height:1.75;max-width:440px;animation:polish-arrive .65s ease-out .2s both}
+.hero-copy>.academic-affiliation{animation:polish-arrive .65s ease-out .26s both}
+.hero-copy>.actions{animation:polish-arrive .65s ease-out .32s both}
+.hero .portrait{animation:polish-portrait .85s cubic-bezier(.2,.7,.2,1) .1s both;box-shadow:0 20px 70px #00000025}
+.hero .portrait>img{animation:none}
+.hero .portrait figcaption{padding-top:90px}
+.gold-current{animation:polish-current-reveal 1.1s ease-out both}
+.hero-line::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#e5b94d88,#e5b94d22,transparent);transform-origin:left;animation:polish-rule 1.1s cubic-bezier(.2,.7,.2,1) .1s both}
+.academic-affiliation>span{font-size:12px;line-height:1.7}
+.hero .actions{gap:28px}
+.hero .button,.hero .text-link{font-size:13px}
+
+/* Larger supporting copy lets the work be read without zooming. */
+header nav{font-size:13px}
+#motion-toggle{font-size:11px}
+.credentials{padding-top:29px;padding-bottom:29px;gap:22px}
+.credentials a{font-size:16px}
+.credentials small{font-size:9px;line-height:1.7;letter-spacing:.35px;margin-top:8px}
+.section-heading>.eyebrow,.section-heading .eyebrow{font-size:10px}
+.section-heading>p{font-size:14px;line-height:1.75;max-width:340px}
+.filter{font-size:12px;min-height:39px}
+#project-shelf button{font-size:13px;padding-top:15px;padding-bottom:11px}
+.stage-copy .eyebrow{font-size:10px;line-height:1.7}
+.stage-copy>p:not(.eyebrow){font-size:15px;line-height:1.75}
+.project-proof{gap:16px}
+.project-proof div{grid-template-columns:105px minmax(0,1fr);gap:13px}
+.project-proof dt{font-size:10px;line-height:1.7;letter-spacing:.65px}
+.project-proof dd{font-size:13px;line-height:1.7}
+.stage-tags{font-size:11px;line-height:1.7}
+.work-hint{font-size:12px;line-height:1.7}
+.about.about-refined{padding-top:65px;padding-bottom:65px}
+.about-refined .about-copy>p{font-size:15px;line-height:1.8}
+.about-refined .about-copy>.about-lead{font-size:17px;line-height:1.75}
+.about-refined .about-copy>.eyebrow{font-size:10px;line-height:1.8}
+.about-refined .about-copy>.personal-note{font-size:14px}
+.education-group{margin:25px 0 28px}
+.education-school>span{font-size:10px;line-height:1.7}
+.credential-label{font-size:10px;line-height:1.7}
+.education-group .education-credential{padding:17px 0}
+.education-credential p{font-size:13px;line-height:1.7}
+.education-credential p.degree-emphasis{font-size:13px}
+.skills span{font-size:11px;line-height:1.6;padding:5px 10px}
+.role-tabs button{font-size:12px;min-height:40px}
+.role-story .eyebrow{font-size:10px;line-height:1.7}
+.role-name{font-size:13px;line-height:1.7}
+.role-body,.role-story li{font-size:14px;line-height:1.8}
+.role-story ul{margin-top:18px}
+.role-project{font-size:13px}
+.role-art-label{font-size:10px;line-height:1.8;max-width:270px}
+.honors-list span{font-size:13px;line-height:1.7}
+.honors-list .honor-school{font-size:10px}
+.honors-disclosure summary>span{font-size:12px;line-height:1.6}
+.honors-resume{font-size:13px}
+dialog p{font-size:15px;line-height:1.8}
+dialog h3{font-size:11px;line-height:1.7}
+.dialog-tags{font-size:11px;line-height:1.7}
+.research-journey span{font-size:12px;line-height:1.7}
+.document-links{font-size:14px;line-height:1.7}
+.contact p{font-size:14px;line-height:1.7}
+.contact .actions{font-size:13px}
+footer{font-size:11px;line-height:1.7}
+
+/* A warm editorial break for the two existing recommendation excerpts. */
+.section.recommendations{position:relative;background:#eee7d8;color:#292820;padding-top:54px;padding-bottom:48px;margin-top:22px;margin-bottom:36px;border-block:1px solid #f7f0e3}
+.recommendations h2{font:400 clamp(29px,3vw,39px)/1.2 Georgia,serif;letter-spacing:-.8px;max-width:650px}
+.recommendations .quote-grid{gap:56px;margin-top:33px}
+.recommendations .quote-grid figure{padding-top:28px;border-top:1px solid #9c814b66}
+.recommendations .quote-grid figure:hover{border-color:#8b6827;transform:none}
+.recommendations .quote-grid blockquote{font:400 clamp(24px,2.3vw,30px)/1.5 Georgia,serif;color:#595546;letter-spacing:-.2px;margin-bottom:28px}
+.recommendations .quote-emphasis{color:#795718}
+.recommendations .quote-finish{color:#383527;background-image:linear-gradient(#9b742c77,#9b742c77)}
+.recommendations .quote-grid figcaption{font-size:13px;line-height:1.6}
+.recommendations .quote-grid figcaption strong{color:#302d24}
+.recommendations .quote-grid figcaption span{font-size:12px;line-height:1.7;color:#645f51;margin-top:6px}
+.recommendations .quote-note{font-size:11px;line-height:1.7;color:#6a6355;margin-top:28px}
+
+@keyframes polish-arrive{from{opacity:.35;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes polish-portrait{from{opacity:.55;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes polish-current-reveal{from{opacity:.2;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes polish-rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+@media(hover:hover){
+  header nav>a{transition:color .2s,border-color .2s}
+  header nav>.nav-contact:hover{border-color:#e5b94d99}
+  .hero .text-link:hover,.role-project:hover{color:#f4d58d;border-color:#e5b94d}
+}
+@media(max-width:1000px){
+  .credentials{gap:22px 30px}
+  .project-proof div{grid-template-columns:1fr;gap:4px}
+  .education-school{gap:13px;align-items:flex-start}
+  .education-school>span{font-size:9px}
+  .role-art-label{font-size:9px}
+}
+@media(max-width:700px){
+  header{gap:18px}
+  header nav{font-size:12px;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+  header nav>a:nth-child(2),header nav>a:nth-child(3){display:inline-flex}
+  header nav>a[href="#about"],header nav>a[href="#experience"]{display:none}
+  #motion-toggle{font-size:10px;padding:8px 4px}
+  .hero-copy>.eyebrow{font-size:9px;letter-spacing:1.15px}
+  .hero-copy>.intro{font-size:22px}
+  .hero-copy>.sub{font-size:14px;max-width:440px}
+  .academic-affiliation>span{font-size:11px}
+  .academic-affiliation .usc-logo{width:78px;flex-shrink:0}
+  .hero .actions{gap:24px}
+  .hero .portrait{max-width:340px}
+  .credentials small{font-size:9px}
+  .section-heading>p{font-size:14px;max-width:430px}
+  .filter{font-size:11px;padding:9px;min-height:39px}
+  .work-controls{gap:7px}
+  #project-shelf button{font-size:12px}
+  .stage-copy{padding:27px 23px}
+  .stage-copy>p:not(.eyebrow){font-size:14px}
+  .stage-copy .eyebrow{font-size:9px}
+  .project-proof dd{font-size:13px}
+  .work-hint{font-size:11px}
+  .about.about-refined{padding-top:42px;padding-bottom:42px}
+  .about-refined .about-copy>.about-lead{font-size:16px}
+  .about-refined .about-copy>p{font-size:14px}
+  .education-school>span{font-size:9px;line-height:1.8}
+  .education-group .education-credential{padding:15px 0}
+  .role-tabs button{font-size:11px;padding:9px 12px}
+  .role-story .eyebrow{font-size:9px}
+  .role-body,.role-story li{font-size:14px}
+  .honors-disclosure summary>span{font-size:10px}
+  .honors-list{column-gap:17px}
+  .honors-list strong{font-size:14px}
+  .honors-list span{font-size:12px}
+  .section.recommendations{padding-top:37px;padding-bottom:34px;margin-bottom:20px}
+  .recommendations .quote-grid{gap:30px;margin-top:25px}
+  .recommendations .quote-grid figure{padding-top:23px}
+  .recommendations .quote-grid blockquote{font-size:25px;margin-bottom:21px}
+  .recommendations .quote-grid figcaption{font-size:13px}
+  .recommendations .quote-note{font-size:11px}
+  dialog p{font-size:14px}
+  .contact p{font-size:13px}
+}
+@media(max-width:380px){
+  header{align-items:flex-start;gap:12px}
+  header nav{max-width:calc(100% - 44px);gap:6px 9px}
+}
+
+/* Pausing never freezes essential content in its entrance state. */
+body.motion-paused .hero-copy>*,body.motion-paused .hero .portrait,
+body.motion-paused .gold-current,body.motion-paused .hero-line::before{animation:none!important;opacity:1;transform:none;clip-path:none}
+body.motion-paused .hero-line i{display:none}
+body.motion-paused .credentials a:hover,body.motion-paused .button:hover{transform:none}
+@media(prefers-reduced-motion:reduce){
+  .hero-copy>*,.hero .portrait,.gold-current,.hero-line::before{animation:none!important;opacity:1;transform:none;clip-path:none}
+  .hero-line i{display:none}
+  .credentials a:hover,.button:hover{transform:none}
+}
