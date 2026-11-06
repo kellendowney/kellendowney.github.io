@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">Kellen Downey — Analytics &amp; Strategy</title>
+<desc id="desc">Professional portfolio. USC Marshall, M.S. Business Analytics. Warm gold typography and orbital lines on a dark background.</desc>
+<defs>
+  <radialGradient id="halo"><stop stop-color="#e5b94d" stop-opacity=".075"/><stop offset="1" stop-color="#e5b94d" stop-opacity="0"/></radialGradient>
+  <linearGradient id="orbit" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e5b94d" stop-opacity=".06"/><stop offset=".6" stop-color="#e5b94d" stop-opacity=".48"/><stop offset="1" stop-color="#e5b94d" stop-opacity=".08"/></linearGradient>
+  <clipPath id="canvas"><rect width="1200" height="630"/></clipPath>
+</defs>
+<rect width="1200" height="630" fill="#111110"/>
+<g clip-path="url(#canvas)">
+  <circle cx="1015" cy="285" r="380" fill="url(#halo)"/>
+  <g fill="none" stroke="url(#orbit)" stroke-width="1.15" transform="translate(1020 286) rotate(-28)">
+    <ellipse rx="174" ry="264"/>
+    <ellipse rx="222" ry="264"/>
+    <ellipse rx="270" ry="264"/>
+    <ellipse rx="318" ry="264"/>
+    <path d="M-340 0H340" opacity=".35"/>
+  </g>
+  <g fill="#e5b94d">
+    <circle cx="901" cy="71" r="4"/>
+    <circle cx="822" cy="419" r="5"/>
+    <circle cx="1158" cy="508" r="3"/>
+  </g>
+</g>
+<path d="M72 69H116" stroke="#e5b94d" stroke-width="2"/>
+<text x="132" y="75" fill="#b9b5a8" font-family="Nimbus Sans,Arial,sans-serif" font-size="15" letter-spacing="3">ANALYTICS &amp; STRATEGY</text>
+<text x="67" y="224" fill="#f0eee7" font-family="Nimbus Sans,Arial,sans-serif" font-size="112" letter-spacing="-4">Kellen</text>
+<text x="66" y="348" fill="#e5b94d" font-family="Liberation Serif,Georgia,serif" font-style="italic" font-size="138" letter-spacing="-5">Downey.</text>
+<text x="74" y="420" fill="#c8c5b9" font-family="Nimbus Sans,Arial,sans-serif" font-size="24" letter-spacing=".2">USC Marshall · M.S. Business Analytics</text>
+<path d="M74 500H1126" stroke="#343329" stroke-width="1"/>
+<text x="74" y="552" fill="#a5a399" font-family="Nimbus Sans,Arial,sans-serif" font-size="19" letter-spacing=".5">kellendowney.github.io</text>
+<path d="M1094 550l21-21m-21 0h21v21" fill="none" stroke="#e5b94d" stroke-width="1.8"/>
+</svg>
