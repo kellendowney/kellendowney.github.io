@@ -1,0 +1,297 @@
+[
+  {
+    "id": "media",
+    "category": "research",
+    "title": "Assassination Attempt: Media Exposure & Public Opinion",
+    "meta": "Collaborative research · POSC 399 · WPSA 2025",
+    "summary": "My most extensive undergraduate research project: a multi-semester study of media exposure, political identity, and public opinion.",
+    "tags": "R / Multiple imputation / Propensity-score matching / Ordinal regression / Marginal effects",
+    "art": "research",
+    "problem": "How did social media news exposure relate to feelings toward Donald Trump before and after the July 2024 assassination attempt—and how did those relationships differ across partisan groups?",
+    "contribution": "I co-authored this research and contributed statistical analysis through POSC 399, an independent study with Dr. Lewis Luartz at Chapman University. The collaboration continued into the following semester and a presentation at the 2025 Western Political Science Association conference. This was my longest and largest undergraduate research commitment, requiring me to learn analytical methods beyond those I had previously used.",
+    "approach": "The team analyzed the 2024 American National Election Studies Pilot and Time Series surveys. The manuscript documents a multistep workflow in R: multiple imputation by chained equations (MICE), propensity-score matching, survey weighting, and proportional and partial proportional odds regression. The team checked covariate balance and model assumptions, compared separate-period and pooled specifications, and estimated average marginal effects by partisan group.",
+    "outcome": "The manuscript reports the most consistent association between social media exposure and warmer evaluations among Republicans. Findings for Independents vary across model specifications; results for Democrats suggest modest movement away from extreme cold evaluations, rather than broad positive support. The observational design and differences between survey periods limit causal interpretation. An earlier stage of the research was presented at WPSA in 2025, supported by three travel grants. The manuscript was submitted for publication but was not published.",
+    "documents": [
+      {
+        "label": "Manuscript & statistical appendix · PDF",
+        "href": "assets/Media_Exposure_Manuscript_and_Appendix.pdf"
+      },
+      {
+        "label": "Earlier research proposal · DOCX",
+        "href": "assets/Political_Attitudes_Research_Proposal.docx"
+      }
+    ],
+    "roleBrief": "Co-author and student researcher in a multi-semester independent study with Dr. Lewis Luartz.",
+    "methodBrief": "R · Multiple imputation · Matching · Ordinal regression · Marginal effects",
+    "resultBrief": "Presented at WPSA 2025; developed a co-authored manuscript with a full statistical appendix.",
+    "featured": true,
+    "manuscriptTitle": "Media Exposure and Feelings Toward Trump: The Impact of Attempted Assassination During the 2024 Presidential Election Campaign",
+    "journey": [
+      {
+        "title": "Independent study",
+        "text": "POSC 399 with Dr. Lewis Luartz"
+      },
+      {
+        "title": "Continued collaboration",
+        "text": "Research across multiple semesters"
+      },
+      {
+        "title": "Conference presentation",
+        "text": "WPSA 2025 · three travel grants"
+      },
+      {
+        "title": "Manuscript submission",
+        "text": "Submitted for publication · unpublished"
+      }
+    ]
+  },
+  {
+    "id": "podcast",
+    "category": "analytics",
+    "title": "Podcast Opportunity Explorer",
+    "meta": "Decision support · USC Marshall · In development",
+    "summary": "Screening millions of podcast feeds to support acquisition and localization decisions.",
+    "tags": "Python / SQL / Streamlit / pytest",
+    "art": "podcast",
+    "problem": "How can a podcast buyer narrow a massive feed database into a practical shortlist without losing sight of data quality or screening assumptions?",
+    "contribution": "Working on a five-person DSO 576 team, I designed the data-loader, screening-rules, and Streamlit architecture, implemented SQL-side filtering, and audited test coverage against the needs of a podcast buyer.",
+    "approach": "The team specification separates presentation, screening rules, and data access. A shared rule contract requires the pandas sample executor and SQLite full-data executor to return identical results. A nine-row fixture defines expected screening counts, while an indexed SQLite cache is designed to handle the full Podcast Index snapshot.",
+    "outcome": "The team’s one-shot specification earned 5/5 in instructor feedback dated October 21, 2026. In the instructor’s build of that specification, all three use cases matched an independent recount and 45 tests passed. Those checks apply to the instructor build, not a separately verified current team deployment. The project remains in development, including a recommendation to default to the full-data cache when available.",
+    "roleBrief": "Architecture, SQL-side filtering, and test-coverage review on a five-person team.",
+    "methodBrief": "Python · SQL · SQLite · pandas · Streamlit · pytest",
+    "resultBrief": "In development. The team specification earned 5/5 in instructor feedback.",
+    "featured": true
+  },
+  {
+    "id": "uas-funding",
+    "category": "strategy",
+    "title": "UAS Funding & Market Direction",
+    "meta": "Defense strategy · General Atomics internship · 2025",
+    "summary": "Analyzing defense budget trajectories to assess the direction of unmanned-aircraft investment.",
+    "tags": "R / Financial regression / Budget analysis",
+    "art": "funding",
+    "problem": "How can historical procurement and research budgets inform an assessment of emerging unmanned-aircraft markets?",
+    "contribution": "During my strategic development internship at General Atomics Aeronautical Systems, I prepared a funding-trajectory analysis comparing investment across unmanned-aircraft categories.",
+    "approach": "The report describes mapping procurement and R&D budget lines into aircraft groups, adjusting dollar amounts for inflation, and applying OLS, Prais–Winsten, log-linear trend models, and segmented regression in R. It translates the analysis into a market-strategy discussion.",
+    "outcome": "The work developed my ability to connect financial analysis with market assessment and communicate an analytical narrative to business stakeholders. This overview focuses on the analytical approach and business context; internal reports and underlying data are not included.",
+    "roleBrief": "Prepared a funding-trajectory analysis during my General Atomics internship.",
+    "methodBrief": "R · Inflation adjustment · OLS · Time-series regression",
+    "resultBrief": "Delivered a market-strategy analysis connecting defense investment trends to business questions.",
+    "featured": true
+  },
+  {
+    "id": "planner",
+    "category": "analytics",
+    "title": "Trojan Deadline Hub",
+    "meta": "Applied AI · USC AI Case Competition · Semifinalist",
+    "summary": "One academic planner that turns scattered syllabi into a verified view of deadlines and workload.",
+    "tags": "AI product design / User verification / Planning",
+    "art": "planner",
+    "problem": "Students must piece together deadlines, exams, and grading information across syllabi, PDFs, Brightspace, and assignment instructions.",
+    "contribution": "I co-designed an AI academic planner and helped scope six core features: syllabus scanning, a calendar, task tracking, a weekly planner, a course hub, and a workload estimator.",
+    "approach": "Students verify every extracted date before it is saved. Missing and TBD dates are flagged for confirmation. The workload estimator recommends start dates and breaks long assignments into study sessions.",
+    "outcome": "Semifinalist in the USC AI Case Competition. The design emphasizes student control and visible uncertainty in AI-generated information.",
+    "roleBrief": "Co-designed the planner and scoped six core features with my team.",
+    "methodBrief": "AI product design · Syllabus extraction workflow · User verification",
+    "resultBrief": "Semifinalist in the USC AI Case Competition.",
+    "featured": true
+  },
+  {
+    "id": "loneliness",
+    "category": "research",
+    "title": "Loneliness & Political Violence",
+    "meta": "Independent capstone · Chapman · December 2025",
+    "summary": "Investigating the relationship between social disconnection and support for political violence.",
+    "tags": "Logistic regression / Survey research / Interaction effects",
+    "art": "loneliness",
+    "problem": "How does loneliness relate to support for political violence?",
+    "contribution": "I independently developed and tested hypotheses about loneliness, partisan identity, and age under the guidance of Dr. Ann Gordon for POSC 410.",
+    "approach": "Using Wave 11 of the Chapman Survey of American Fears, I constructed a loneliness measure from the three-item UCLA scale and estimated logistic regressions for two outcomes: endorsement of political violence and willingness to damage property for a political cause. The analysis includes demographic controls, age-by-loneliness interactions, odds ratios, and predicted probabilities. The methods section reports analytical samples of 448 and 439 respondents.",
+    "outcome": "The reported results did not support the hypothesis that loneliness increases support for political violence. Loneliness was negatively associated with willingness to damage property, while younger adults showed greater support for the violence outcomes. The age-by-loneliness interaction was not statistically significant. These are observational associations.",
+    "documents": [
+      {
+        "label": "Research poster · PDF",
+        "href": "assets/Loneliness_Political_Violence_Poster.pdf#page=2"
+      },
+      {
+        "label": "Read capstone · DOCX",
+        "href": "assets/Loneliness_Political_Violence_Capstone.docx"
+      }
+    ],
+    "image": "assets/Loneliness_Political_Violence_Poster.png",
+    "posterPdf": "assets/Loneliness_Political_Violence_Poster.pdf#page=2",
+    "imageAlt": "Loneliness and Support for Political Violence in the United States — research poster by Kellen Downey",
+    "roleBrief": "Independently developed the study and tested hypotheses with faculty guidance.",
+    "methodBrief": "Logistic regression · Survey measures · Interaction effects · Predicted probabilities",
+    "resultBrief": "Found no support for the hypothesis that loneliness increases support for political violence.",
+    "featured": true
+  },
+  {
+    "id": "competitive",
+    "category": "strategy",
+    "title": "Unmanned Aircraft Competitive Intelligence",
+    "meta": "Competitive analysis · General Atomics internship · 2025",
+    "summary": "Structuring a competitor assessment around market demand, product positioning, and procurement context.",
+    "tags": "Competitive research / Market assessment / Executive synthesis",
+    "art": "competitive",
+    "problem": "What does a competing unmanned-aircraft platform mean for market positioning and future customer demand?",
+    "contribution": "I prepared an MQ-28-focused competitive intelligence plan as part of my defense-market research during the General Atomics internship.",
+    "approach": "The plan organizes competitor research, program maturity, customer interest, industrial-base considerations, and budget signals into a structured market assessment. It connects those dimensions to strategic positioning and communication priorities.",
+    "outcome": "The deliverable illustrates my ability to synthesize a complex technical market into a business-oriented brief. This overview describes the analytical work without reproducing company-specific recommendations or detailed platform comparisons."
+  },
+  {
+    "id": "shared-housing",
+    "category": "analytics",
+    "title": "Shared-Housing Revenue Opportunities",
+    "meta": "Property analytics · Team project · October 2025",
+    "summary": "Turning property features into a prioritized shortlist for pricing tests and targeted upgrades.",
+    "tags": "Feature engineering / Regression / Risk-adjusted ranking",
+    "art": "housing",
+    "problem": "Which shared-housing properties should receive attention first, and which improvements are worth testing?",
+    "contribution": "I co-authored this analysis with Luca Heines, connecting property-level modeling to a practical revenue and investment plan.",
+    "approach": "The presentation compares linear, ridge, and lasso regression for revenue, and logistic regression, KNN, decision tree, and random forest for identifying top performers. It describes training-only tuning and class-imbalance treatment, leakage removal, and features for amenities, accessibility, property condition, and local context.",
+    "outcome": "The proposed workflow selects linear regression for directional revenue estimates and logistic regression for prioritization. A Top-20 shortlist combines the two signals with risk adjustments, followed by a 90-day plan for pricing tests, practical upgrades, and measurement. The deck presents recommendations rather than realized revenue gains.",
+    "documents": [
+      {
+        "label": "View presentation · PPTX",
+        "href": "assets/Shared_Housing_Revenue.pptx"
+      }
+    ]
+  },
+  {
+    "id": "travel",
+    "category": "analytics",
+    "title": "Travel Package Prediction",
+    "meta": "Machine learning · MGSC 310 · Coursework",
+    "summary": "Comparing classification models and customer segments to inform travel package marketing.",
+    "tags": "Random forest / Logistic regression / K-means",
+    "art": "travel",
+    "problem": "How can booking behavior support customer segmentation and package-offer targeting?",
+    "contribution": "My MGSC 310 portfolio includes three iterations of a travel analytics presentation, developing model evaluation and business recommendations. This is an academic case analysis.",
+    "approach": "The decks describe missing-value treatment, categorical encoding, scaling, an 80/20 training-validation split, three customer clusters, and a comparison of logistic regression with random forest. The final iteration explicitly pivots from nights-stayed regression to classification of the is_package field.",
+    "outcome": "The final deck reports 90.72% validation accuracy for random forest and 85.55% for logistic regression. These are presentation-reported package-classification results, not trip-duration forecast accuracy. Recommendations cover mobile offers, seasonal campaigns, and segment-specific messaging.",
+    "documents": [
+      {
+        "label": "Strategic pivot · PPTX",
+        "href": "assets/Travel_Analysis_Strategic_Pivot.pptx"
+      },
+      {
+        "label": "Expanded analysis · PPTX",
+        "href": "assets/Travel_Analysis_Expanded.pptx"
+      },
+      {
+        "label": "Initial analysis · PPTX",
+        "href": "assets/Travel_Analysis_Initial.pptx"
+      }
+    ]
+  },
+  {
+    "id": "rental",
+    "category": "analytics",
+    "title": "Rental Property ROI Model",
+    "meta": "Predictive modeling · Chapman · Fall 2025",
+    "summary": "Using housing data to forecast rental income and compare investment opportunities in San Diego County.",
+    "tags": "Python / Machine learning / Real estate",
+    "art": "rental",
+    "problem": "How can home-sale and rental data help compare properties on projected rental income and return on investment?",
+    "contribution": "For Chapman’s MGSC 310 machine-learning coursework, I engineered a Python model using thousands of San Diego County home-sale and rental records.",
+    "approach": "Features included bedrooms, bathrooms, renovation status, and school proximity. The model forecasts rental income and ranks listings by projected ROI.",
+    "outcome": "A coursework model that translates property features into a decision-oriented ranking. Projections are model estimates rather than realized investment returns."
+  },
+  {
+    "id": "forecast",
+    "category": "strategy",
+    "title": "U.S. Economic Outlook",
+    "meta": "Economic analysis · Q1–Q2 2026",
+    "summary": "An economic briefing connecting growth, inflation, and labor-market conditions to the outlook.",
+    "tags": "Macroeconomics / Scenario analysis / Economic writing",
+    "art": "forecast",
+    "problem": "How do changes in consumption, investment, trade, and energy prices affect the near-term economic outlook?",
+    "contribution": "I authored a U.S. economic forecast that organizes macroeconomic indicators into a narrative about growth, inflation, and labor-market conditions.",
+    "approach": "The report breaks GDP into its expenditure components and applies aggregate demand–aggregate supply reasoning to interpret competing demand and supply pressures. It distinguishes headline from core inflation and discusses the transmission of policy uncertainty and energy costs.",
+    "outcome": "A dated analytical writing sample for Q1 and Q2 2026. Its forecasts and source figures reflect the report’s stated context; this portfolio does not present them as a current or independently validated economic forecast.",
+    "documents": [
+      {
+        "label": "Read economic outlook · DOCX",
+        "href": "assets/US_Economic_Forecast_2026.docx"
+      }
+    ]
+  },
+  {
+    "id": "energy",
+    "category": "strategy",
+    "title": "Australia’s National Energy Strategy",
+    "meta": "Energy policy · POSC 370",
+    "summary": "Evaluating energy security, renewable deployment, and the trade-offs of an export-oriented energy economy.",
+    "tags": "Energy markets / Policy analysis / Strategy",
+    "art": "energy",
+    "problem": "How can Australia balance domestic energy needs, export dependence, and a transition toward lower-emission energy?",
+    "contribution": "I prepared a national energy strategy presentation for POSC 370: Energy Politics.",
+    "approach": "The presentation examines coal, natural gas, and renewable resources; industrial, residential, and transport demand; grid modernization and storage; and policy instruments for renewable deployment. It considers a 20-year planning horizon.",
+    "outcome": "A strategic assessment of the tensions between sustainability, energy independence, and economic growth. The recommendations emphasize infrastructure, storage, policy coordination, and the risks associated with changing global energy markets.",
+    "documents": [
+      {
+        "label": "View energy strategy · PPTX",
+        "href": "assets/Australia_Energy_Strategy.pptx"
+      }
+    ]
+  },
+  {
+    "id": "millennium",
+    "category": "strategy",
+    "title": "Evaluating the Millennium Villages Project",
+    "meta": "Development economics · Team research · August 2024",
+    "summary": "Assessing whether improvements in basic services translate into lasting poverty reduction.",
+    "tags": "Program evaluation / Evidence synthesis / Development",
+    "art": "development",
+    "problem": "How effective were the Millennium Villages interventions, and how durable were their benefits?",
+    "contribution": "I co-authored the paper with Shayla Toone, Desiree Plascencia, and Naomi Chavez for Political Economy of Development. I wrote the Results section, evaluating evidence on outcomes and long-term sustainability.",
+    "approach": "The paper examines the Sauri, Kenya case alongside published evaluations of the broader initiative. My section distinguishes improvements in education and healthcare from the challenge of sustaining gains in income and poverty reduction.",
+    "outcome": "The analysis argues that immediate service improvements do not by themselves establish durable economic development. It highlights institutional constraints, financing, and intervention design as important considerations when evaluating ambitious development programs.",
+    "documents": [
+      {
+        "label": "Read team paper · DOCX",
+        "href": "assets/Millennium_Villages_Analysis.docx"
+      }
+    ]
+  },
+  {
+    "id": "voting",
+    "category": "research",
+    "title": "Compulsory Voting & Polarization",
+    "meta": "Research proposal · WIRE application · October 2024",
+    "summary": "Designing a comparative study of voter participation, party attachment, and political polarization.",
+    "tags": "Research design / Comparative politics / Proposed regression",
+    "art": "voting",
+    "problem": "Could compulsory voting change party attachment and reduce political polarization?",
+    "contribution": "I developed a WIRE research proposal for a planned project with Dr. Lewis Luartz.",
+    "approach": "The proposal outlines a comparative survey-data approach using CSES and ANES, with planned linear and logistic regressions to examine turnout, party attachment, and polarization. It develops a mechanism in which broader participation changes the audience that political campaigns must address.",
+    "outcome": "A research-design artifact documenting the question, proposed mechanism, and intended analytical approach. It is a proposal, with no completed empirical findings claimed here.",
+    "documents": [
+      {
+        "label": "Read research proposal · DOCX",
+        "href": "assets/Compulsory_Voting_Proposal.docx"
+      }
+    ]
+  },
+  {
+    "id": "california",
+    "category": "research",
+    "title": "Polarization in California",
+    "meta": "Research poster · Chapman University",
+    "summary": "Examining how party identification and ideology relate to voter turnout in California.",
+    "tags": "Logistic regression / ANES / Research presentation",
+    "art": "california",
+    "image": "assets/California_Polarization_Poster.jpg",
+    "problem": "What is the relationship between political polarization and voting behavior in California?",
+    "contribution": "I co-authored and presented this research poster with Zaphera Fidelis through Chapman University’s Department of Political Science.",
+    "approach": "The poster identifies the ANES Time Series Cumulative Data File, 1948–2020, as its data source. It models whether a respondent voted using logistic regression, with measures related to ideology, party identification, and pre-election registration. The results table reports 2,157 observations.",
+    "outcome": "The poster brings together the research question, hypothesis, regression output, and a turnout visualization. Its discussion describes differences across ideological groups. The analysis is observational, and the poster alone does not establish a causal effect of polarization.",
+    "documents": [
+      {
+        "label": "Open research poster photo · JPG",
+        "href": "assets/California_Polarization_Poster.jpg"
+      }
+    ]
+  }
+]
