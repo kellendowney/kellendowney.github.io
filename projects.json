@@ -49,18 +49,28 @@
     "id": "podcast",
     "category": "analytics",
     "title": "Podcast Opportunity Explorer",
-    "meta": "Decision support · USC Marshall · In development",
-    "summary": "Screening millions of podcast feeds to support acquisition and localization decisions.",
+    "meta": "Decision support · USC Marshall · Live team demo",
+    "summary": "Screening podcast feeds to build a transparent research queue, with a live demo using 6,000 Podcast Index sample feeds.",
     "tags": "Python / SQL / Streamlit / pytest",
     "art": "podcast",
     "problem": "How can a podcast buyer narrow a massive feed database into a practical shortlist without losing sight of data quality or screening assumptions?",
     "contribution": "Working on a five-person DSO 576 team, I designed the data-loader, screening-rules, and Streamlit architecture, implemented SQL-side filtering, and audited test coverage against the needs of a podcast buyer.",
-    "approach": "The team specification separates presentation, screening rules, and data access. A shared rule contract requires the pandas sample executor and SQLite full-data executor to return identical results. A nine-row fixture defines expected screening counts, while an indexed SQLite cache is designed to handle the full Podcast Index snapshot.",
-    "outcome": "The team’s one-shot specification earned 5/5 in instructor feedback dated October 21, 2026. In the instructor’s build of that specification, all three use cases matched an independent recount and 45 tests passed. Those checks apply to the instructor build, not a separately verified current team deployment. The project remains in development, including a recommendation to default to the full-data cache when available.",
+    "approach": "The project began with a layered specification separating presentation, screening rules, and data access. The current Streamlit demo screens a 6,000-feed Podcast Index course sample by category, language, activity window, episode history, explicit-content preference, and discovery score. A visible screening funnel explains how each rule narrows the results. Activity is anchored to the sample’s August 31, 2026 snapshot, and repeated nonblank Podcast GUIDs are deduplicated.",
+    "outcome": "The team’s one-shot specification earned 5/5 in instructor feedback dated October 21, 2026. In the instructor’s build of that specification, all three use cases matched an independent recount and 45 tests passed; those checks describe that earlier build. The current team app is now available as a live demo below. Its results cover the 6,000-feed sample and provide a queue for further audience, rights, editorial, and commercial review.",
     "roleBrief": "Architecture, SQL-side filtering, and test-coverage review on a five-person team.",
     "methodBrief": "Python · SQL · SQLite · pandas · Streamlit · pytest",
-    "resultBrief": "In development. The team specification earned 5/5 in instructor feedback.",
-    "featured": true
+    "resultBrief": "Live team app with a 6,000-feed sample, adjustable screening rules, and a transparent results funnel.",
+    "featured": true,
+    "documents": [
+      {
+        "label": "Open the live team app",
+        "href": "https://dso576-project-podcast-index.streamlit.app/"
+      },
+      {
+        "label": "View the team repository",
+        "href": "https://github.com/JoanneY416/DSO576-project"
+      }
+    ]
   },
   {
     "id": "uas-funding",

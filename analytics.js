@@ -62,11 +62,7 @@
       } catch (_) { /* Ignore malformed links without changing navigation. */ }
     }
     if (target.closest('#project-shelf [data-feature], #shelf-prev, #shelf-next')) selectedProject();
-    if (target.closest('#podcast-lab .pd-reset, #podcast-lab .pd-empty-reset, #podcast-lab .pd-show-all')) useDemo();
-  }, { passive: true });
-
-  document.addEventListener('change', event => {
-    if (event.isTrusted && event.target instanceof Element && event.target.matches('#podcast-lab .pd-filters select')) useDemo();
+    if (link && link.hostname === 'dso576-project-podcast-index.streamlit.app') useDemo();
   }, { passive: true });
 
   document.addEventListener('keydown', event => {
@@ -99,3 +95,4 @@
   }, { once: true });
   document.head.appendChild(tracker);
 })();
+
