@@ -168,3 +168,48 @@ body.motion-paused .credentials a:hover,body.motion-paused .button:hover{transfo
   .hero-line i{display:none}
   .credentials a:hover,.button:hover{transform:none}
 }
+
+/* November refinement: champagne, ink blue, and clear navigation. */
+:root{--gold:#d8b875;--red:#d8b875}
+html{scroll-padding-top:110px}
+html.motion-paused,html.motion-paused *{scroll-behavior:auto!important}
+header nav a[aria-current="location"]{color:var(--gold);text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:2px}
+@media(min-width:701px){header{position:sticky;top:0;z-index:20;background:#111110ed;backdrop-filter:blur(16px);border-bottom:1px solid #d8b87518}}
+:is(.filter,.role-tabs button,#motion-toggle){min-height:44px}
+.shelf-arrows button,.close{min-width:44px;min-height:44px}
+.close{background:#171714;z-index:2}
+.art-research{background:radial-gradient(ellipse at center,#779ac514,transparent 75%),#151a21}
+.art-research .preview-overline{color:#b6cce5}
+.section.recommendations{background:#18212b;color:#f0eee7;border-color:#779ac532;border-radius:14px}
+.recommendations .quote-grid blockquote{color:#c2cbd4}
+.recommendations .quote-emphasis{color:#e5c88c}
+.recommendations .quote-finish{color:#edf1f5;background-image:linear-gradient(#a8bddb80,#a8bddb80)}
+.recommendations .quote-grid figcaption strong{color:#eadbb8}
+.recommendations .quote-grid figcaption span,.recommendations .quote-note{color:#b9c3cf}
+.recommendations .quote-grid figure{border-color:#a8bddb50}
+.stage-art>.evidence-preview{animation:panel-reveal .5s ease-out both}
+@keyframes panel-reveal{from{opacity:.5;transform:translateY(10px)}to{opacity:1;transform:none}}
+.motion-offscreen :is(.gold-current i,.role-rings i,.project-illustration *,.pd-signal i),.page-inactive *,.page-inactive *::before,.page-inactive *::after{animation-play-state:paused!important}
+body.motion-paused .stage-art>.evidence-preview{animation:none!important;opacity:1;transform:none}
+body.motion-paused .stage-art:after{display:none}
+body.motion-paused :is(.sound-art,.planner-art,.data-art){translate:none!important}
+@media(max-width:700px){
+  html{scroll-padding-top:20px}
+  header{flex-wrap:wrap;gap:10px}
+  header .brand span{display:inline;font-size:11px}
+  header nav{width:100%;max-width:none;justify-content:flex-start;gap:2px 15px;font-size:12px}
+  header nav>a[href="#about"],header nav>a[href="#experience"]{display:inline-flex}
+  header nav>a{min-height:44px;align-items:center;display:inline-flex}
+  header .nav-contact{padding:5px 12px}
+  #motion-toggle{font-size:11px;padding:6px 0}
+  .work-controls{flex-wrap:wrap}
+  .section.recommendations{border-radius:0}
+}
+@media(prefers-reduced-motion:reduce){.stage-art>.evidence-preview{animation:none!important;opacity:1;transform:none}}
+body.motion-paused .reveal{opacity:1;transform:none;transition:none!important}
+body.motion-paused *,body.motion-paused *::before,body.motion-paused *::after{transition:none!important}
+@media(min-width:701px) and (max-width:1000px){
+  html{scroll-padding-top:160px}
+  header{flex-wrap:wrap;gap:6px}
+  header nav{width:100%;gap:18px;flex-wrap:wrap}
+}

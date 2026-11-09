@@ -50,16 +50,16 @@
     "category": "analytics",
     "title": "Podcast Opportunity Explorer",
     "meta": "Decision support · USC Marshall · Live team demo",
-    "summary": "Screening podcast feeds to build a transparent research queue, with a live demo using 6,000 Podcast Index sample feeds.",
+    "summary": "Building a research queue from 6,000 podcast feeds—and checking whether the results support the decision.",
     "tags": "Python / SQL / Streamlit / pytest",
     "art": "podcast",
     "problem": "How can a podcast buyer narrow a massive feed database into a practical shortlist without losing sight of data quality or screening assumptions?",
-    "contribution": "Working on a five-person DSO 576 team, I designed the data-loader, screening-rules, and Streamlit architecture, implemented SQL-side filtering, and audited test coverage against the needs of a podcast buyer.",
-    "approach": "The project began with a layered specification separating presentation, screening rules, and data access. The current Streamlit demo screens a 6,000-feed Podcast Index course sample by category, language, activity window, episode history, explicit-content preference, and discovery score. A visible screening funnel explains how each rule narrows the results. Activity is anchored to the sample’s August 31, 2026 snapshot, and repeated nonblank Podcast GUIDs are deduplicated.",
-    "outcome": "The team’s one-shot specification earned 5/5 in instructor feedback dated October 21, 2026. In the instructor’s build of that specification, all three use cases matched an independent recount and 45 tests passed; those checks describe that earlier build. The current team app is now available as a live demo below. Its results cover the 6,000-feed sample and provide a queue for further audience, rights, editorial, and commercial review.",
-    "roleBrief": "Architecture, SQL-side filtering, and test-coverage review on a five-person team.",
-    "methodBrief": "Python · SQL · SQLite · pandas · Streamlit · pytest",
-    "resultBrief": "Live team app with a 6,000-feed sample, adjustable screening rules, and a transparent results funnel.",
+    "contribution": "On our DSO 576 team, I contributed the application architecture and screening specification, then audited the current MVP against a concrete acquisition-research decision. I independently recomputed two live searches from the CSV, checked the returned feed IDs, and investigated whether “not explicit” could support a child-focused shortlist.",
+    "approach": "The current Streamlit demo screens a 6,000-feed Podcast Index course sample by category, language, activity window, episode history, explicit-content preference, and discovery score. My November 8 audit used standard-library CSV processing independently of the app. Activity is anchored to the sample’s August 31, 2026 snapshot; repeated nonblank Podcast GUIDs are deduplicated.",
+    "outcome": "The independent audit reproduced seven feeds with explicit preference set to Any and six with Not explicit only. It traced a misleading funnel label: the episode-minimum card also includes the explicit-content filter. It also showed why a feed not marked explicit is not evidence of suitability for children. I documented two proposed changes (CR-09 and CR-10), with live screenshots and source-backed reasoning; these requests remain open in the audited version. The team’s earlier one-shot specification earned 5/5 in instructor feedback; its earlier 45-test result applies to that separate instructor build, not this current audit.",
+    "roleBrief": "Application specification, independent numerical checks, and decision-focused validation on a collaborative team.",
+    "methodBrief": "Python · CSV audit · pandas · Streamlit · Data validation",
+    "resultBrief": "Reproduced two live searches; documented a funnel-label issue and limits of explicit-content metadata.",
     "featured": true,
     "documents": [
       {
@@ -69,6 +69,18 @@
       {
         "label": "View the team repository",
         "href": "https://github.com/JoanneY416/DSO576-project"
+      },
+      {
+        "label": "My validation case · PDF",
+        "href": "https://github.com/JoanneY416/DSO576-project/blob/00122879d37b2b8a1ddf20aaa166dfe0323d610e/Kellen_Downey_Module_11_Case.pdf"
+      },
+      {
+        "label": "Independent Python audit",
+        "href": "https://github.com/JoanneY416/DSO576-project/blob/00122879d37b2b8a1ddf20aaa166dfe0323d610e/check_kellen_case.py"
+      },
+      {
+        "label": "Proposed changes · CR-09 & CR-10",
+        "href": "https://github.com/JoanneY416/DSO576-project/blob/00122879d37b2b8a1ddf20aaa166dfe0323d610e/change-requests.md"
       }
     ]
   },
