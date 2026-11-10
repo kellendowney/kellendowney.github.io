@@ -11,7 +11,7 @@
 
   host.innerHTML = `
     <div class="pd-shell">
-      <div class="pd-topline"><span class="pd-kicker">02 / THE INTERACTIVE CASE</span><span class="pd-data-label">Podcast Opportunity Explorer</span></div>
+      <div class="pd-topline"><span class="pd-kicker">03 / THE INTERACTIVE CASE</span><span class="pd-data-label">Podcast Opportunity Explorer</span></div>
       <div class="pd-intro"><h2 id="podcast-lab-title">Look beyond<br>the <em>number.</em></h2><div><p>A shortlist can be numerically correct and still need a closer look. Walk through my independent check of our team’s podcast application.</p><a class="pd-project-link" href="#projects" data-podcast-project>Explore the full project <span aria-hidden="true">↗</span></a></div></div>
       <div class="pd-audit" aria-labelledby="pd-audit-title">
         <div class="pd-audit-heading"><h3 id="pd-audit-title">From search result to sound judgment.</h3><p>RECORDED AUDIT · 08 NOV 2026</p></div>

@@ -80,11 +80,11 @@ function art(p){const evidence=evidencePreview(p);if(evidence)return evidence;co
 // The gallery exposes the work at a glance; project details retain the full evidence.
 const galleryOrder = ['podcast', 'uas-funding', 'planner', 'media', 'loneliness'];
 const galleryNotes = {
-  podcast: { label: 'APPLIED ANALYTICS', status: 'LIVE TEAM APP', title: 'Podcast Opportunity Explorer', role: 'Application specification · Independent validation', caption: '6,000 sample feeds. A more considered shortlist.' },
-  'uas-funding': { label: 'DEFENSE STRATEGY', status: 'GENERAL ATOMICS', title: 'UAS Funding & Market Direction', role: 'Funding analysis · R regression models', caption: 'Turning investment signals into business context.' },
-  planner: { label: 'APPLIED AI', status: 'USC SEMIFINALIST', title: 'Trojan Deadline Hub', role: 'Collaborative product design · Feature scoping', caption: 'An academic planner with verification built in.' },
-  media: { label: 'COLLABORATIVE RESEARCH', status: 'WPSA 2025', title: 'Media Exposure & Public Opinion', role: 'Co-author · Statistical analysis in R', caption: 'A multi-semester study of media, identity, and public opinion.' },
-  loneliness: { label: 'INDEPENDENT RESEARCH', status: 'CHAPMAN CAPSTONE', title: 'Loneliness & Political Violence', role: 'Research design · Logistic regression', caption: 'Testing a hypothesis—and following the evidence.' }
+  podcast: { label: 'APPLIED ANALYTICS', status: 'LIVE TEAM APP', title: 'Podcast Opportunity Explorer', role: 'Application specification · Independent validation', caption: 'Independently reproduced two live searches and documented a misleading filter label.' },
+  'uas-funding': { label: 'DEFENSE STRATEGY', status: 'GENERAL ATOMICS', title: 'UAS Funding & Market Direction', role: 'Funding analysis · R regression models', caption: 'Delivered an R-based analysis connecting defense investment trends to market strategy.' },
+  planner: { label: 'APPLIED AI', status: 'USC SEMIFINALIST', title: 'Trojan Deadline Hub', role: 'Collaborative product design · Feature scoping', caption: 'Co-designed a six-feature AI planner; semifinalist in the USC AI Case Competition.' },
+  media: { label: 'COLLABORATIVE RESEARCH', status: 'WPSA 2025', title: 'Media Exposure & Public Opinion', role: 'Co-author · Statistical analysis in R', caption: 'Co-authored a manuscript and statistical appendix; presented earlier findings at WPSA 2025.' },
+  loneliness: { label: 'INDEPENDENT RESEARCH', status: 'CHAPMAN CAPSTONE', title: 'Loneliness & Political Violence', role: 'Research design · Logistic regression', caption: 'Found no support for the hypothesis that loneliness increases support for political violence.' }
 };
 
 function galleryVisual(p) {

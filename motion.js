@@ -49,7 +49,7 @@ if ('IntersectionObserver' in window) {
   const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
     if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
   }), { threshold: .08 });
-  document.querySelectorAll('.about,.spotlight,.featured-endorsement,.academic-endorsement').forEach(element => { element.classList.add('reveal'); revealObserver.observe(element); });
+  document.querySelectorAll('.about,.spotlight,.recommendation-pair').forEach(element => { element.classList.add('reveal'); revealObserver.observe(element); });
   const activityObserver = new IntersectionObserver(entries => entries.forEach(entry => { entry.target.classList.toggle('motion-offscreen', !entry.isIntersecting); }));
   document.querySelectorAll('.hero,.section').forEach(element => activityObserver.observe(element));
 }

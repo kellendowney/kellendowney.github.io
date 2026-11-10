@@ -45,5 +45,19 @@ dialog{background:#151716;border-radius:4px;border-color:#d5b87835;max-width:940
 /* Directional symbols remain legible across system font sets. */
 a,button,[aria-hidden="true"]{font-family:PortfolioSymbols,Arial,sans-serif}.hero-orbit,.cello-strings{font-family:inherit}
 
-.site-header nav{max-width:none}.site-header nav a[aria-current="location"]{text-decoration:none}
-@media(max-width:760px){.site-header nav{flex-wrap:nowrap}.site-header nav .desktop-word{display:none}.site-header nav>a{min-height:34px;display:inline-flex!important;align-items:center}.site-header nav .nav-contact>span[aria-hidden]{margin-left:3px}}
+.site-header{flex-wrap:nowrap}.site-header nav{max-width:none;width:auto}.site-header nav a[aria-current="location"]{text-decoration:none}
+.recommendation-pair{border-block:1px solid var(--line);padding-block:48px}
+.endorsement-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:48px}
+.endorsement-card{display:flex;flex-direction:column;min-width:0}
+.endorsement-card+.endorsement-card{border-left:1px solid var(--line);padding-left:48px}
+.endorsement-card>.eyebrow{font:9px/1.7 monospace;letter-spacing:1.2px;color:var(--gold);margin-bottom:24px}
+.endorsement-card figure{display:flex;flex-direction:column;flex:1}
+.endorsement-card blockquote{font:400 clamp(25px,2.4vw,33px)/1.4 Georgia,serif;letter-spacing:-.35px;margin:0 0 28px}
+.endorsement-card blockquote em{font-style:normal;color:var(--gold)}
+.endorsement-card .quote-finish{color:#e5dbbf}
+.endorsement-card figcaption{display:flex;align-items:center;gap:15px;margin-top:auto}
+.endorsement-card figcaption strong{font-size:12px;font-weight:500}
+.endorsement-card figcaption div>span{display:block;font-size:11px;line-height:1.65;color:var(--muted);margin-top:5px}
+.endorsement-card .quote-note{font-size:10px;line-height:1.6;color:var(--muted);margin-top:18px}
+@media(max-width:900px){.recommendation-pair{padding-block:38px}.endorsement-grid{grid-template-columns:1fr;gap:30px}.endorsement-card+.endorsement-card{border-left:0;border-top:1px solid var(--line);padding:30px 0 0}.endorsement-card>.eyebrow{font-size:8px;margin-bottom:19px}.endorsement-card blockquote{font-size:27px;line-height:1.4;margin-bottom:22px}}
+@media(max-width:760px){.site-header{flex-wrap:wrap}.site-header nav{width:100%;flex-wrap:nowrap}.site-header nav .desktop-word{display:none}.site-header nav>a{min-height:34px;display:inline-flex!important;align-items:center}.site-header nav .nav-contact>span[aria-hidden]{margin-left:3px}}
