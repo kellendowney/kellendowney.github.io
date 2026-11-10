@@ -77,15 +77,131 @@ function evidencePreview(p,inDialog=false){
 
 function art(p){const evidence=evidencePreview(p);if(evidence)return evidence;const illustration=projectIllustration(p);if(illustration)return illustration;if(p.id==='media')return `<div class="research-art" aria-hidden="true"><span class="workflow-label">FROM QUESTION TO EVIDENCE</span><div class="research-step"><span>01</span><div><strong>Prepare</strong><small>Survey data · missing values</small></div><i></i></div><div class="research-step"><span>02</span><div><strong>Compare</strong><small>Matching · covariate balance</small></div><i></i></div><div class="research-step"><span>03</span><div><strong>Test</strong><small>Ordinal models · diagnostics</small></div><i></i></div><div class="research-step"><span>04</span><div><strong>Interpret</strong><small>Marginal effects · uncertainty</small></div><i></i></div><span class="research-art-foot">COLLABORATIVE RESEARCH IN R</span></div>`;if(p.image)return `<a class="stage-poster-link" href="${p.posterPdf||p.image}" target="_blank" rel="noopener"><img class="stage-poster" src="${p.image}" alt="${escapeHtml(p.imageAlt||p.title+' research poster')}"><span>Open original poster ↗</span></a>`;if(p.id==='podcast')return `<div class="sound-art" aria-hidden="true">${Array.from({length:31},(_,i)=>`<i style="--h:${25+Math.sin(i*.75)**2*110}px;--d:${-i*.17}s"></i>`).join('')}</div><span class="art-caption">FROM SIGNAL TO SHORTLIST</span>`;if(p.id==='planner')return `<div class="planner-art" aria-hidden="true"><span>ONE CLEAR VIEW.</span><div>${Array.from({length:28},(_,i)=>`<i style="--d:${i*.12}s"></i>`).join('')}</div><b>Your semester, connected.</b></div>`;return `<div class="workflow-art" aria-hidden="true"><span class="workflow-label">${p.category==='research'?'RESEARCH PROCESS':'ANALYTICAL PROCESS'}</span><div class="flow-node">${p.category==='research'?'Question & data':'Market signals'}</div><i></i><div class="flow-node">${p.category==='research'?'Model & test':'Analysis & interpretation'}</div><i></i><div class="flow-node">${p.category==='research'?'Evidence & limits':'Strategic implications'}</div></div>`}
 
-function renderProjects(){visibleProjects=projects.filter(p=>activeFilter==='all'||(activeFilter==='featured'?p.featured:p.category===activeFilter));if(!visibleProjects.some(p=>p.id===featuredId))featuredId=visibleProjects[0].id;shelf.innerHTML=visibleProjects.map(p=>`<button role="tab" id="project-tab-${p.id}" aria-controls="project-stage" aria-selected="${p.id===featuredId}" tabindex="${p.id===featuredId?0:-1}" data-feature="${p.id}">${p.title}</button>`).join('');featureProject(featuredId);}
-function featureProject(id,focus=false){featuredId=id;const p=projects.find(p=>p.id===id);shelf.querySelectorAll('button').forEach(b=>{const yes=b.dataset.feature===id;b.setAttribute('aria-selected',String(yes));b.tabIndex=yes?0:-1;if(yes&&focus){b.focus({preventScroll:true});shelf.scrollTo({left:b.offsetLeft-shelf.offsetLeft-20,behavior:(document.body.classList.contains('motion-paused')||matchMedia('(prefers-reduced-motion: reduce)').matches)?'instant':'smooth'})}});stage.setAttribute('aria-labelledby','project-tab-'+id);stage.innerHTML=`<div class="stage-art art-${p.category}">${art(p)}</div><div class="stage-copy"><p class="eyebrow">${p.meta}</p><h3>${p.title}</h3><p>${p.summary}</p>${p.roleBrief?`<dl class="project-proof"><div><dt>My contribution</dt><dd>${p.roleBrief}</dd></div><div><dt>Methods &amp; tools</dt><dd>${p.methodBrief}</dd></div><div><dt>Result</dt><dd>${p.resultBrief}</dd></div></dl>`:''}<div class="stage-tags">${p.tags.split(' / ').map(t=>`<span>${t}</span>`).join('')}</div><button class="button" data-project="${p.id}">Inside the project <span>↗</span></button></div>`;}
-function selectFilter(value){activeFilter=value;document.querySelectorAll('.filter').forEach(b=>{b.classList.toggle('active',b.dataset.filter===value);b.setAttribute('aria-pressed',String(b.dataset.filter===value))});renderProjects()}
-document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>selectFilter(b.dataset.filter)));shelf.addEventListener('click',e=>{const b=e.target.closest('[data-feature]');if(b)featureProject(b.dataset.feature)});
-function stepFeature(d){const i=visibleProjects.findIndex(p=>p.id===featuredId);featureProject(visibleProjects[(i+d+visibleProjects.length)%visibleProjects.length].id,true)}
-document.querySelector('#shelf-prev').addEventListener('click',()=>stepFeature(-1));document.querySelector('#shelf-next').addEventListener('click',()=>stepFeature(1));shelf.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();stepFeature(e.key==='ArrowRight'?1:-1)}else if(e.key==='Home'||e.key==='End'){e.preventDefault();featureProject(visibleProjects[e.key==='Home'?0:visibleProjects.length-1].id,true)}});
-function showProject(id){const p=projects.find(x=>x.id===id);if(!p)return;activeProject=id;document.querySelector('#dialog-content').innerHTML=`<p class="eyebrow">${p.meta}</p><h2 id="dialog-title">${p.title}</h2>${p.manuscriptTitle?`<p class="manuscript-title"><span>MANUSCRIPT TITLE</span>${escapeHtml(p.manuscriptTitle)}</p>`:""}${p.journey?`<ol class="research-journey" aria-label="Research development">${p.journey.map(j=>`<li><strong>${escapeHtml(j.title)}</strong><span>${escapeHtml(j.text)}</span></li>`).join("")}</ol>`:""}${evidencePreview(p,true)|| (projectIllustration(p)?`<div class="project-illustration-preview">${projectIllustration(p)}</div>`:p.image?`<a class="poster-preview" href="${p.posterPdf||p.image}" target="_blank" rel="noopener"><img src="${p.image}" alt="${escapeHtml(p.imageAlt||p.title+' research poster')}"><span>Open full-size poster ↗</span></a>`:"")}<div class="dialog-tags">${p.tags.split(' / ').map(t=>`<span>${escapeHtml(t)}</span>`).join('')}</div><h3>01 / THE QUESTION</h3><p>${p.problem}</p><h3>02 / MY CONTRIBUTION</h3><p>${p.contribution}</p><h3>03 / THE APPROACH</h3><p>${p.approach}</p><h3>04 / OUTCOME & CONTEXT</h3><p>${p.outcome}</p>${p.documents?`<h3>PROJECT MATERIALS</h3><div class="document-links">${p.documents.map(d=>`<a href="${d.href}" target="_blank" rel="noopener">${d.label} ↗</a>`).join('')}</div>`:''}`;document.querySelector('#dialog-position').textContent=p.category==='analytics'?'Analytics & AI':p.category==='research'?'Research':'Strategy & Policy';if(!dialog.open)dialog.showModal();dialog.scrollTop=0;document.dispatchEvent(new CustomEvent("portfolio-project-open",{detail:{id:p.id}}));}
-stage.addEventListener('click',e=>{const b=e.target.closest('[data-project]');if(b)showProject(b.dataset.project)});
-function moveProject(d){const i=visibleProjects.findIndex(p=>p.id===activeProject);showProject(visibleProjects[(i+d+visibleProjects.length)%visibleProjects.length].id)}
-document.querySelector('#prev-project').addEventListener('click',()=>moveProject(-1));document.querySelector('#next-project').addEventListener('click',()=>moveProject(1));document.querySelector('.close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});document.addEventListener('keydown',e=>{if(dialog.open){if(e.key==='ArrowRight')moveProject(1);if(e.key==='ArrowLeft')moveProject(-1)}});
-document.querySelectorAll('[data-skill]').forEach(link=>link.addEventListener('click',()=>{const value=link.dataset.skill.toLowerCase();selectFilter('all');const p=projects.find(p=>[p.tags,p.summary,p.approach].join(' ').toLowerCase().includes(value));if(p)featureProject(p.id,true)}));renderProjects();
+// The gallery exposes the work at a glance; project details retain the full evidence.
+const galleryOrder = ['podcast', 'uas-funding', 'planner', 'media', 'loneliness'];
+const galleryNotes = {
+  podcast: { label: 'APPLIED ANALYTICS', status: 'LIVE TEAM APP', title: 'Podcast Opportunity Explorer', role: 'Application specification · Independent validation', caption: '6,000 sample feeds. A more considered shortlist.' },
+  'uas-funding': { label: 'DEFENSE STRATEGY', status: 'GENERAL ATOMICS', title: 'UAS Funding & Market Direction', role: 'Funding analysis · R regression models', caption: 'Turning investment signals into business context.' },
+  planner: { label: 'APPLIED AI', status: 'USC SEMIFINALIST', title: 'Trojan Deadline Hub', role: 'Collaborative product design · Feature scoping', caption: 'An academic planner with verification built in.' },
+  media: { label: 'COLLABORATIVE RESEARCH', status: 'WPSA 2025', title: 'Media Exposure & Public Opinion', role: 'Co-author · Statistical analysis in R', caption: 'A multi-semester study of media, identity, and public opinion.' },
+  loneliness: { label: 'INDEPENDENT RESEARCH', status: 'CHAPMAN CAPSTONE', title: 'Loneliness & Political Violence', role: 'Research design · Logistic regression', caption: 'Testing a hypothesis—and following the evidence.' }
+};
 
+function galleryVisual(p) {
+  if (p.id === 'podcast') return `<div class="gallery-art gallery-podcast"><div class="gallery-art-label"><span>THE RESEARCH QUEUE</span><span>01</span></div><div class="gallery-wave" aria-hidden="true">${Array.from({length:35}, (_,i) => `<i style="--bar:${23 + Math.round(Math.sin(i*.48)**2*74)}%;--delay:${i*10}ms"></i>`).join('')}</div><div class="gallery-sample"><span>6,000</span><small>PODCAST INDEX<br>COURSE SAMPLE</small></div><a class="gallery-live-screen" href="https://dso576-project-podcast-index.streamlit.app/" target="_blank" rel="noopener" aria-label="Open the live Podcast Opportunity Explorer team application"><span class="gallery-screen-caption"><span>Live team application</span><span>Open app</span></span><img src="assets/previews/podcast-app.png" alt="Screenshot of our Podcast Opportunity Explorer, showing screening controls, the 6,000-feed sample, and a four-feed true-crime research queue." width="1363" height="936" loading="lazy"></a><div class="gallery-art-footer"><span>Screen. Inspect. Validate.</span><span>Python / SQL / Streamlit</span></div></div>`;
+  if (p.id === 'uas-funding') return `<div class="gallery-art gallery-funding" aria-hidden="true"><div class="gallery-art-label"><span>ANALYTICAL APPROACH</span><span>02</span></div><div class="funding-equation"><span>Investment</span><i>→</i><em>Direction</em></div><div class="funding-route"><span>Budget signals</span><i></i><span>Regression</span><i></i><span>Strategy</span></div></div>`;
+  if (p.id === 'planner') return `<div class="gallery-art gallery-planner" aria-hidden="true"><div class="gallery-art-label"><span>CONCEPT WORKFLOW</span><span>03</span></div><div class="planner-composition"><div class="planner-sheet"><span>SYLLABUS</span><i></i><i></i><i></i></div><span class="planner-arrow">→</span><div class="planner-mini-calendar">${Array.from({length:21}, (_,i)=>`<i class="${[2,7,11,17].includes(i)?'calendar-mark':''}"></i>`).join('')}</div></div><div class="planner-caption"><span>AI suggests.</span><em>You verify.</em></div></div>`;
+  if (p.id === 'media') return `<div class="gallery-art gallery-research"><div class="gallery-art-label"><span>ORIGINAL MANUSCRIPT FIGURE</span><span>FIG. 01</span></div><img src="assets/previews/media-marginal-effects.png" alt="Original marginal-effects figure comparing media exposure patterns across partisan groups, with confidence intervals." width="1431" height="894" loading="lazy"><span class="gallery-image-caption">Full figure and statistical context inside</span></div>`;
+  if (p.id === 'loneliness') return `<div class="gallery-art gallery-loneliness"><div class="gallery-art-label"><span>ORIGINAL RESEARCH POSTER</span><span>05</span></div><div class="gallery-poster-sheet"><img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.imageAlt)}" loading="lazy"></div><span class="gallery-image-caption">Measures, methods, and findings</span></div>`;
+  if (p.id === 'california') return `<div class="gallery-art gallery-research gallery-california"><div class="gallery-art-label"><span>ORIGINAL RESEARCH POSTER</span><span>CHAPMAN</span></div><img src="${escapeHtml(p.image)}" alt="California polarization research poster" loading="lazy"></div>`;
+  const motifs = {
+    competitive: ['Market signals', 'Competitive context', 'ASSESS / POSITION / COMMUNICATE'],
+    'shared-housing': ['Property data', 'Revenue priorities', 'MODEL / RANK / TEST'],
+    travel: ['Customer behavior', 'Package choice', 'CLASSIFY / COMPARE / SEGMENT'],
+    rental: ['Rental income', 'Investment context', 'PREDICT / COMPARE / RANK'],
+    forecast: ['Economic signals', 'The outlook', 'GROWTH / INFLATION / LABOR'],
+    energy: ['Energy security', 'Long-term strategy', 'RESOURCES / DEMAND / POLICY'],
+    millennium: ['Intervention', 'Lasting outcomes?', 'EVIDENCE / IMPACT / SUSTAINABILITY'],
+    voting: ['Participation', 'Polarization', 'RESEARCH DESIGN / PROPOSED STUDY']
+  };
+  const motif = motifs[p.id] || ['Question', 'Evidence', 'ANALYSIS / INTERPRETATION'];
+  return `<div class="gallery-art gallery-type gallery-type-${escapeHtml(p.category)}" aria-hidden="true"><div class="gallery-art-label"><span>${escapeHtml(p.category==='research'?'RESEARCH QUESTION':'PROJECT OVERVIEW')}</span><span>${escapeHtml(p.category.toUpperCase())}</span></div><div class="gallery-type-title"><span>${escapeHtml(motif[0])}</span><i>→</i><em>${escapeHtml(motif[1])}</em></div><div class="gallery-type-foot">${escapeHtml(motif[2])}</div></div>`;
+}
+
+function galleryCard(p, i) {
+  const note = galleryNotes[p.id];
+  const label = note?.label || (p.category === 'analytics' ? 'ANALYTICS & AI' : p.category === 'research' ? 'RESEARCH' : 'STRATEGY');
+  const role = note?.role || p.roleBrief || p.contribution;
+  const longRole = !note && !p.roleBrief;
+  return `<article class="project-card project-card-${escapeHtml(p.id)}" role="listitem" data-feature="${escapeHtml(p.id)}" style="--card-index:${i}">
+    ${galleryVisual(p)}
+    <div class="gallery-copy"><div class="gallery-kicker"><span>${escapeHtml(label)}</span>${note?`<span>${escapeHtml(note.status)}</span>`:''}</div>
+    <h3>${escapeHtml(note?.title || p.title)}</h3><p class="gallery-summary">${escapeHtml(note?.caption || p.summary)}</p>
+    <p class="gallery-role${longRole?' gallery-role-long':''}"><span>MY ROLE</span>${escapeHtml(role)}</p>
+    <div class="gallery-bottom"><div class="gallery-tags">${p.tags.split(' / ').slice(0,3).map(tag=>`<span>${escapeHtml(tag)}</span>`).join('')}</div><button class="gallery-open" type="button" data-project="${escapeHtml(p.id)}" aria-label="Explore ${escapeHtml(p.title)}"><span>Explore project</span><b aria-hidden="true">↗</b></button></div></div>
+  </article>`;
+}
+
+function renderProjects() {
+  visibleProjects = projects.filter(p => activeFilter === 'all' || (activeFilter === 'featured' ? p.featured : p.category === activeFilter));
+  visibleProjects.sort((a,b) => {
+    const aIndex = galleryOrder.indexOf(a.id), bIndex = galleryOrder.indexOf(b.id);
+    return (aIndex === -1 ? 100 : aIndex) - (bIndex === -1 ? 100 : bIndex);
+  });
+  shelf.setAttribute('role','list');
+  shelf.setAttribute('aria-label','Project gallery');
+  shelf.classList.toggle('gallery-featured',activeFilter === 'featured');
+  shelf.innerHTML = visibleProjects.map(galleryCard).join('');
+  if (stage) { stage.hidden = true; stage.removeAttribute('role'); stage.removeAttribute('aria-labelledby'); }
+  const resultStatus = document.querySelector('#gallery-status');
+  if (resultStatus) resultStatus.textContent = `${visibleProjects.length} ${activeFilter === 'featured'?'featured ':''}projects shown`;
+}
+
+function featureProject(id, focus = false) {
+  const project = projects.find(p => p.id === id);
+  if (!project) return;
+  if (!visibleProjects.some(p=>p.id===id)) selectFilter('all');
+  featuredId = id;
+  const card = shelf.querySelector(`[data-feature="${id}"]`);
+  shelf.querySelectorAll('.project-card').forEach(item => item.classList.toggle('is-selected',item === card));
+  if (focus && card) {
+    const button = card.querySelector('[data-project]');
+    button?.focus({preventScroll:true});
+    card.scrollIntoView({block:'center',behavior:(document.body.classList.contains('motion-paused') || matchMedia('(prefers-reduced-motion: reduce)').matches)?'instant':'smooth'});
+  }
+  document.dispatchEvent(new CustomEvent('portfolio-project-select',{detail:{id}}));
+}
+
+function selectFilter(value) {
+  if (!['all','featured','analytics','research','strategy'].includes(value)) return;
+  activeFilter = value;
+  document.querySelectorAll('.filter').forEach(button => {
+    button.classList.toggle('active',button.dataset.filter === value);
+    button.setAttribute('aria-pressed',String(button.dataset.filter === value));
+  });
+  renderProjects();
+}
+
+document.querySelectorAll('.filter').forEach(button => button.addEventListener('click',()=>selectFilter(button.dataset.filter)));
+shelf.addEventListener('click',event => {
+  const button = event.target.closest('[data-project]');
+  if (button) { featureProject(button.dataset.project); showProject(button.dataset.project); }
+});
+
+let dialogTrigger = null;
+function showProject(id) {
+  const p = projects.find(project=>project.id===id);
+  if (!p) return;
+  activeProject = id;
+  if (!dialog.open) dialogTrigger = document.activeElement;
+  document.querySelector('#dialog-content').innerHTML = `<p class="eyebrow">${escapeHtml(p.meta)}</p><h2 id="dialog-title">${escapeHtml(p.title)}</h2>${p.manuscriptTitle?`<p class="manuscript-title"><span>MANUSCRIPT TITLE</span>${escapeHtml(p.manuscriptTitle)}</p>`:''}${p.journey?`<ol class="research-journey" aria-label="Research development">${p.journey.map(j=>`<li><strong>${escapeHtml(j.title)}</strong><span>${escapeHtml(j.text)}</span></li>`).join('')}</ol>`:''}${evidencePreview(p,true) || (projectIllustration(p)?`<div class="project-illustration-preview">${projectIllustration(p)}</div>`:p.image?`<a class="poster-preview" href="${escapeHtml(p.posterPdf||p.image)}" target="_blank" rel="noopener"><img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.imageAlt||p.title+' research poster')}"><span>Open full-size poster ↗</span></a>`:'')}<div class="dialog-tags">${p.tags.split(' / ').map(tag=>`<span>${escapeHtml(tag)}</span>`).join('')}</div><h3>01 / THE QUESTION</h3><p>${escapeHtml(p.problem)}</p><h3>02 / MY CONTRIBUTION</h3><p>${escapeHtml(p.contribution)}</p><h3>03 / THE APPROACH</h3><p>${escapeHtml(p.approach)}</p><h3>04 / OUTCOME &amp; CONTEXT</h3><p>${escapeHtml(p.outcome)}</p>${p.documents?`<h3>PROJECT MATERIALS</h3><div class="document-links">${p.documents.map(doc=>`<a href="${escapeHtml(doc.href)}" target="_blank" rel="noopener">${escapeHtml(doc.label)} <span aria-hidden="true">↗</span></a>`).join('')}</div>`:''}`;
+  document.querySelector('#dialog-position').textContent = p.category === 'analytics' ? 'Analytics & AI' : p.category === 'research' ? 'Research' : 'Strategy & Policy';
+  if (!dialog.open) dialog.showModal();
+  dialog.scrollTop = 0;
+  document.dispatchEvent(new CustomEvent('portfolio-project-open',{detail:{id:p.id}}));
+}
+if (stage) stage.addEventListener('click',event => { const button=event.target.closest('[data-project]'); if(button) showProject(button.dataset.project); });
+function moveProject(direction) {
+  const pool = visibleProjects.some(p=>p.id===activeProject)?visibleProjects:projects;
+  const index = pool.findIndex(p=>p.id===activeProject);
+  showProject(pool[(index+direction+pool.length)%pool.length].id);
+}
+document.querySelector('#prev-project').addEventListener('click',()=>moveProject(-1));
+document.querySelector('#next-project').addEventListener('click',()=>moveProject(1));
+document.querySelector('.close').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('close',()=> { if(dialogTrigger?.isConnected) dialogTrigger.focus({preventScroll:true}); });
+dialog.addEventListener('click',event => {
+  if(event.target!==dialog) return;
+  const rect=dialog.getBoundingClientRect();
+  if(event.clientX<rect.left || event.clientX>rect.right || event.clientY<rect.top || event.clientY>rect.bottom) dialog.close();
+});
+document.addEventListener('keydown',event => {
+  if(!dialog.open || event.altKey || event.ctrlKey || event.metaKey || /^(INPUT|SELECT|TEXTAREA)$/.test(event.target.tagName)) return;
+  if(event.key==='ArrowRight' || event.key==='ArrowLeft') { event.preventDefault(); moveProject(event.key==='ArrowRight'?1:-1); }
+});
+document.querySelectorAll('[data-skill]').forEach(link=>link.addEventListener('click',event=> {
+  const value=link.dataset.skill.toLowerCase();
+  const project=projects.find(p=>[p.tags,p.summary,p.approach].join(' ').toLowerCase().includes(value));
+  if(project) { event.preventDefault(); selectFilter('all'); featureProject(project.id,true); }
+}));
+renderProjects();

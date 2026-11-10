@@ -49,11 +49,6 @@
     } catch (_) { /* Analytics must never interrupt a portfolio interaction. */ }
   }
 
-  function selectedProject() {
-    const id = document.querySelector('#project-shelf [aria-selected="true"]')?.dataset.feature;
-    if (projectIds.has(id)) record('project_select', { project: id });
-  }
-
   function useDemo() {
     if (!demoUsed) {
       demoUsed = true;
@@ -114,16 +109,15 @@
         if (item) record('evidence_open', { item });
       } catch (_) { /* Ignore malformed links without changing navigation. */ }
     }
-    if (target.closest('#project-shelf [data-feature], #shelf-prev, #shelf-next')) selectedProject();
     if (link && link.hostname === 'dso576-project-podcast-index.streamlit.app') useDemo();
     const choice = target.closest('[data-audit-choice]')?.dataset.auditChoice;
     if (choice === 'any' || choice === 'not-explicit') record('audit_compare', { option: choice });
   }, { passive: true });
 
-  document.addEventListener('keydown', event => {
-    if (!event.isTrusted || !(event.target instanceof Element)) return;
-    if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key) && event.target.closest('#project-shelf')) selectedProject();
-  }, { passive: true });
+  document.addEventListener('portfolio-project-select', event => {
+    const id = event.detail?.id;
+    if (projectIds.has(id)) record('project_select', { project: id });
+  });
 
   document.addEventListener('portfolio-project-open', event => {
     const id = event.detail?.id;

@@ -10,6 +10,7 @@ function updateMotion() {
   motionButton.setAttribute('aria-pressed', String(paused));
   motionButton.textContent = reduced.matches ? 'Reduced motion' : paused ? 'Play motion' : 'Pause motion';
   motionButton.disabled = reduced.matches;
+  motionButton.setAttribute('aria-label', reduced.matches ? 'Reduced motion is enabled in your system settings' : paused ? 'Play decorative motion' : 'Pause decorative motion');
   document.querySelectorAll('svg').forEach(svg => {
     if (paused) svg.pauseAnimations?.(); else svg.unpauseAnimations?.();
   });
@@ -21,11 +22,13 @@ motionButton.addEventListener('click', () => {
 });
 reduced.addEventListener('change', updateMotion);
 const motionObserver = new MutationObserver(updateMotion);
-['#project-stage', '#dialog-content'].forEach(selector => motionObserver.observe(document.querySelector(selector), { childList: true }));
+['#project-shelf', '#dialog-content'].forEach(selector => motionObserver.observe(document.querySelector(selector), { childList: true }));
 updateMotion();
 const progress = document.querySelector('#scroll-progress');
 const sectionLinks = [...document.querySelectorAll('header nav a[href^="#"]')];
-const sections = sectionLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+const sections = [...document.querySelectorAll('main > section[id]')].filter(section => sectionLinks.some(link => link.hash === '#' + section.id));
+const heroPortrait = document.querySelector('.hero-portrait');
+const heroSection = document.querySelector('.cinematic-hero');
 let scrollQueued = false;
 function updateScroll() {
   const max = document.documentElement.scrollHeight - innerHeight;
@@ -36,6 +39,7 @@ function updateScroll() {
     if (link.hash === '#' + current) link.setAttribute('aria-current', 'location');
     else link.removeAttribute('aria-current');
   });
+  if (heroPortrait && heroSection && !manualPause && !reduced.matches && innerWidth > 760 && scrollY < heroSection.offsetHeight) heroPortrait.style.setProperty('--portrait-y', Math.min(scrollY * .055, 38) + 'px');
   scrollQueued = false;
 }
 addEventListener('scroll', () => { if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(updateScroll); } }, { passive: true });
@@ -45,19 +49,18 @@ if ('IntersectionObserver' in window) {
   const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
     if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
   }), { threshold: .08 });
-  document.querySelectorAll('.about,.spotlight,.quote-grid figure').forEach(element => { element.classList.add('reveal'); revealObserver.observe(element); });
+  document.querySelectorAll('.about,.spotlight,.featured-endorsement,.academic-endorsement').forEach(element => { element.classList.add('reveal'); revealObserver.observe(element); });
   const activityObserver = new IntersectionObserver(entries => entries.forEach(entry => { entry.target.classList.toggle('motion-offscreen', !entry.isIntersecting); }));
   document.querySelectorAll('.hero,.section').forEach(element => activityObserver.observe(element));
 }
 document.addEventListener('visibilitychange', () => document.body.classList.toggle('page-inactive', document.hidden));
-const workStage = document.querySelector('#project-stage');
-workStage.addEventListener('pointermove', event => {
+// Restrained depth on the gallery, with no scroll interception.
+const gallery = document.querySelector('#project-shelf');
+gallery?.addEventListener('pointermove', event => {
   if (manualPause || reduced.matches || event.pointerType === 'touch') return;
-  const art = event.target.closest('.stage-art'); if (!art) return;
-  const rect = art.getBoundingClientRect(), x = event.clientX - rect.left, y = event.clientY - rect.top;
-  art.style.setProperty('--pointer-x', x + 'px'); art.style.setProperty('--pointer-y', y + 'px');
-  art.style.setProperty('--art-x', ((x / rect.width - .5) * 12) + 'px'); art.style.setProperty('--art-y', ((y / rect.height - .5) * 12) + 'px');
+  const card = event.target.closest('.project-card');
+  if (!card) return;
+  const rect = card.getBoundingClientRect();
+  card.style.setProperty('--pointer-x', ((event.clientX - rect.left) / rect.width * 100) + '%');
+  card.style.setProperty('--pointer-y', ((event.clientY - rect.top) / rect.height * 100) + '%');
 }, { passive: true });
-workStage.addEventListener('pointerleave', () => {
-  const art = workStage.querySelector('.stage-art'); if (art) { art.style.setProperty('--art-x', '0px'); art.style.setProperty('--art-y', '0px'); }
-});
