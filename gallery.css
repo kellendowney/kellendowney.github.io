@@ -5,10 +5,8 @@
 #project-shelf .project-card:hover,#project-shelf .project-card:focus-within,#project-shelf .project-card.is-selected{border-color:#d5b878}
 #project-shelf .project-card::after{content:'';position:absolute;bottom:-1px;left:0;width:100%;height:1px;background:#d5b878;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 #project-shelf .project-card:hover::after,#project-shelf .project-card:focus-within::after{transform:scaleX(1)}
-#project-shelf.gallery-featured .project-card-podcast{grid-column:1/8;grid-row:1/3}
-#project-shelf.gallery-featured .project-card-uas-funding{grid-column:8/13;grid-row:1}
-#project-shelf.gallery-featured .project-card-planner{grid-column:8/13;grid-row:2}
-#project-shelf.gallery-featured .project-card-media,#project-shelf.gallery-featured .project-card-loneliness{grid-row:3;grid-column:span 6}
+#project-shelf.gallery-featured .project-card-lead{grid-column:span 4;grid-row:1}
+#project-shelf.gallery-featured .project-card-podcast,#project-shelf.gallery-featured .project-card-loneliness{grid-column:span 6;grid-row:2}
 .gallery-copy{padding:24px 0 0;flex:1;display:flex;flex-direction:column;min-width:0}
 .gallery-kicker{display:flex;justify-content:space-between;gap:14px;color:#b9b2a5;font:10px/1.6 monospace;letter-spacing:1px;text-transform:uppercase}
 .gallery-kicker>span:last-child{color:#d5b878;text-align:right}
@@ -262,4 +260,62 @@ body.motion-paused .project-card *,body.motion-paused .project-card::after,body.
   .gallery-podcast,.gallery-featured .gallery-podcast{height:415px;min-height:415px;gap:13px}
   .gallery-podcast .gallery-sample>span{font-size:63px}
   .gallery-live-screen,.gallery-featured .gallery-live-screen{min-height:135px}
+}
+
+/* Three leading areas of work, followed by supporting projects. */
+#project-shelf.gallery-featured .project-card{grid-column:span 6;grid-row:auto;padding-bottom:28px}
+#project-shelf.gallery-featured .project-card.project-card-lead{grid-column:span 4}
+#project-shelf.gallery-featured .project-card-lead .gallery-art{height:300px;min-height:300px;flex:none;padding:22px}
+#project-shelf.gallery-featured .project-card-lead .gallery-copy{padding-top:24px}
+#project-shelf.gallery-featured .project-card-lead .gallery-copy h3{font-size:29px;line-height:1.16;max-width:none;margin:14px 0}
+#project-shelf.gallery-featured .project-card-lead .gallery-summary{font-size:14px;line-height:1.7}
+#project-shelf.gallery-featured .project-card-lead .gallery-role{font-size:12px;line-height:1.7;margin-top:20px}
+#project-shelf.gallery-featured .project-card-lead .gallery-role>span{display:block;margin:0 0 5px}
+#project-shelf.gallery-featured .project-card-lead .gallery-bottom{display:block;padding-top:22px}
+#project-shelf.gallery-featured .project-card-lead .gallery-tags{display:flex;font-size:10px;max-width:none;margin-bottom:12px}
+#project-shelf.gallery-featured .project-card-lead .gallery-open{width:100%;padding-left:0}
+.gallery-funding{background:radial-gradient(ellipse at 15% 30%,#d5b87816,transparent 65%),linear-gradient(130deg,#282a29,#18212a)}
+.funding-context{font:8px/1.6 monospace;letter-spacing:1.1px;color:#b7b5a9;margin-top:8px}
+.gallery-funding .funding-equation{display:block;font:38px/1.1 Georgia,serif;margin:20px 0}
+.funding-equation>span,.funding-equation>em{display:block}
+.gallery-funding .funding-equation>i{display:block;font:italic 18px/1.5 Georgia,serif;margin:3px 0;color:#b5b5aa}
+.gallery-funding .funding-route{margin-top:auto;font-size:8px;gap:8px}
+.gallery-funding .gallery-art-label>span:first-child{color:#e5d2a8}
+#project-shelf.gallery-featured .project-card-planner .planner-composition{inset:63px 22px 88px;width:auto;justify-content:center;gap:22px}
+#project-shelf.gallery-featured .project-card-planner .planner-sheet{width:63px;height:84px;padding:11px}
+#project-shelf.gallery-featured .project-card-planner .planner-mini-calendar{width:108px;gap:5px}
+#project-shelf.gallery-featured .project-card-planner .planner-mini-calendar i{height:15px}
+#project-shelf.gallery-featured .project-card-planner .planner-caption{font-size:32px;max-width:none}
+#project-shelf.gallery-featured .project-card-media .gallery-research img{width:100%;height:207px;margin-top:19px;object-fit:cover;object-position:top}
+#project-shelf.gallery-featured .project-card-podcast .gallery-podcast{height:415px;min-height:415px;flex:none;padding:24px;gap:15px}
+#project-shelf.gallery-featured .project-card-podcast .gallery-copy{padding-top:24px}
+#project-shelf.gallery-featured .project-card-podcast .gallery-copy h3{font-size:30px;max-width:none}
+#project-shelf.gallery-featured .project-card-podcast .gallery-summary{font-size:14px}
+#project-shelf.gallery-featured .project-card-podcast .gallery-role{font-size:12px;margin-top:20px}
+#project-shelf.gallery-featured .gallery-live-screen{min-height:150px}
+#project-shelf.gallery-featured .project-card-loneliness .gallery-loneliness{height:415px}
+#project-shelf.gallery-featured .project-card-loneliness .gallery-poster-sheet{height:350px;width:88%}
+@media(min-width:701px) and (max-width:1100px){
+  #project-shelf.gallery-featured .project-card.project-card-lead{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:28px}
+  #project-shelf.gallery-featured .project-card-lead .gallery-art{height:100%;min-height:320px}
+  #project-shelf.gallery-featured .project-card-lead .gallery-copy{padding-top:0}
+  #project-shelf.gallery-featured .project-card-lead .gallery-copy h3{font-size:31px}
+  #project-shelf.gallery-featured .project-card-lead .gallery-bottom{padding-top:17px}
+}
+@media(max-width:700px){
+  #project-shelf.gallery-featured{grid-template-columns:minmax(0,1fr);gap:38px}
+  #project-shelf.gallery-featured .project-card,#project-shelf.gallery-featured .project-card.project-card-lead{grid-column:1;grid-row:auto}
+  #project-shelf.gallery-featured .project-card-lead .gallery-art{height:280px;min-height:280px;padding:22px}
+  #project-shelf.gallery-featured .project-card-lead .gallery-copy h3{font-size:30px}
+  #project-shelf.gallery-featured .project-card-lead .gallery-copy{padding-top:22px}
+  #project-shelf.gallery-featured .project-card-media .gallery-research img{height:190px;margin-top:12px}
+  .gallery-funding .funding-equation{font-size:39px;margin:14px 0}
+  #project-shelf.gallery-featured .project-card-planner .planner-composition{top:58px;bottom:85px}
+  #project-shelf.gallery-featured .project-card-loneliness .gallery-loneliness{height:300px}
+  #project-shelf.gallery-featured .project-card-loneliness .gallery-poster-sheet{height:255px}
+}
+@media(max-width:360px){
+  #project-shelf.gallery-featured .project-card-lead .gallery-copy h3{font-size:28px}
+  #project-shelf.gallery-featured .project-card-lead .gallery-kicker{letter-spacing:.35px;font-size:8px}
+  #project-shelf.gallery-featured .project-card-podcast .gallery-podcast{padding:20px;gap:13px}
 }
